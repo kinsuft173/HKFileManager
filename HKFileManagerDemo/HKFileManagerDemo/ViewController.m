@@ -18,8 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+   NSMutableArray* arrayTest = [HKFileManager readJsonFromFile:@"test"];
     
-    [HKFileManager readImgFromFile:@"test"];
+    if (!arrayTest) {
+        
+        [HKFileManager writeJsonToFile:[NSMutableArray arrayWithObjects:[NSDate date],nil] WithName:@"test"];
+    
+        NSLog(@"save test data");
+        
+        return;
+        
+    }else{
+    
+    
+        NSLog(@"saved data : %@",arrayTest);
+    
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

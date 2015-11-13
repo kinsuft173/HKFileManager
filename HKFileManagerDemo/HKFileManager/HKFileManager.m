@@ -26,7 +26,7 @@
 + (BOOL)writeJsonToFile:(NSMutableArray*)array WithName:(NSString*)name
 {
     
-    NSString *doc = [JsonCache documentsDirectory];
+    NSString *doc = [HKFileManager documentsDirectory];
     NSString *path = [doc stringByAppendingPathComponent:name];
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:array];
     BOOL success = [archivedData writeToFile:path atomically:YES];
@@ -37,7 +37,7 @@
 + (BOOL)writeImgToFile:(NSData*)data WithName:(NSString*)name
 {
     
-    NSString *doc = [JsonCache documentsDirectory];
+    NSString *doc = [HKFileManager documentsDirectory];
     NSString *path = [doc stringByAppendingPathComponent:name];
 //    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:array];
     BOOL success = [data writeToFile:path atomically:YES];
@@ -47,7 +47,7 @@
 
 + (NSData*)readImgFromFile:(NSString*)name
 {
-    NSString *doc = [JsonCache documentsDirectory];
+    NSString *doc = [HKFileManager documentsDirectory];
     NSString *path = [doc stringByAppendingPathComponent:name];
     NSData *data = [NSData dataWithContentsOfFile:path];
 //    NSMutableArray*dic = nil;
@@ -61,7 +61,7 @@
 
 + (NSMutableArray*)readJsonFromFile:(NSString*)name
 {
-    NSString *doc = [JsonCache documentsDirectory];
+    NSString *doc = [HKFileManager documentsDirectory];
     NSString *path = [doc stringByAppendingPathComponent:name];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSMutableArray*dic = nil;
